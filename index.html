@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper Message Box</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #2b2b2b;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 16px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        /* Read Me Button */
+        .readme-btn {
+            width: 100%;
+            padding: 20px;
+            font-size: 24px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            background: #f0e6d2;
+            border: 3px solid #8b7355;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #8b7355;
+            transition: all 0.1s ease;
+            letter-spacing: 2px;
+            color: #4a3729;
+            margin-bottom: 20px;
+        }
+        
+        .readme-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #8b7355;
+        }
+        
+        /* Paper Message Box */
+        .message-box {
+            background: #fff9e6;
+            border: 2px solid #8b7355;
+            border-radius: 20px;
+            padding: 25px;
+            position: relative;
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        /* Paper texture effect */
+        .message-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 45%, #f0e6d2 45%, #f0e6d2 55%, transparent 55%);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            border-radius: 20px;
+            pointer-events: none;
+        }
+        
+        /* Folded corner effect */
+        .message-box::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #fff9e6 50%, #8b7355 50%);
+            border-radius: 0 20px 0 20px;
+        }
+        
+        /* Message content */
+        .message-content {
+            position: relative;
+            z-index: 1;
+            min-height: 200px;
+        }
+        
+        .message-title {
+            font-size: 28px;
+            color: #4a3729;
+            border-bottom: 2px dashed #8b7355;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .message-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4a3729;
+            margin-bottom: 20px;
+            white-space: pre-line;
+        }
+        
+        .signature {
+            text-align: right;
+            font-style: italic;
+            color: #6b5a4a;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        
+        /* Next button */
+        .next-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 20px;
+            font-family: 'Courier New', monospace;
+            background: #8b7355;
+            color: #fff9e6;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: background 0.3s ease;
+        }
+        
+        .next-btn:hover {
+            background: #6b5a4a;
+        }
+        
+        /* Page 2 (hidden initially) */
+        .page-2 {
+            display: none;
+        }
+        
+        /* Animation */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Decorative elements */
+        .paper-line {
+            width: 100%;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, transparent, transparent 5px, #d4c4a8 5px, #d4c4a8 10px);
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Read Me Button -->
+        <button class="readme-btn" onclick="showMessage()">📜 READ ME</button>
+        
+        <!-- Paper Message Box (Page 1) -->
+        <div class="message-box" id="messageBox">
+            <div class="message-content" id="page1">
+                <div class="message-title">✨ Secret Message ✨</div>
+                <div class="paper-line"></div>
+                <div class="message-text">
+                    Hello there! 👋
+                    
+                    This is your first message on this paper.
+                    It feels like writing on real paper, doesn't it?
+                    
+                    Click the button below to go to the next page...
+                </div>
+                <div class="paper-line"></div>
+                <div class="signature">- Your Secret Admirer</div>
+                
+                <!-- Next Button -->
+                <button class="next-btn" onclick="showNextPage()">📄 Next Page →</button>
+            </div>
+            
+            <!-- Page 2 (hidden initially) -->
+            <div class="message-content page-2" id="page2">
+                <div class="message-title">📝 Page Two</div>
+                <div class="paper-line"></div>
+                <div class="message-text">
+                    Welcome to the second page! 🎉
+                    
+                    You found the hidden message!
+                    
+                    Here's a special code for you: 
+                    🌟 CODE: PAPER-2024 🌟
+                    
+                    What would you like to write on this paper?
+                </div>
+                <div class="paper-line"></div>
+                <div class="signature">- Continued...</div>
+                
+                <!-- Go Back Button -->
+                <button class="next-btn" onclick="showPreviousPage()">📜 ← Previous Page</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show the message box
+        function showMessage() {
+            document.getElementById('messageBox').style.display = 'block';
+            // Hide page 2 and show page 1 when opening fresh
+            document.getElementById('page1').style.display = 'block';
+            document.getElementById('page2').style.display = 'none';
+        }
+        
+        // Function to show next page
+        function showNextPage() {
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'block';
+        }
+        
+        // Function to show previous page
+        function showPreviousPage() {
+            document.getElementById('page1').style.display = 'block';
+            document.getElementById('page2').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
