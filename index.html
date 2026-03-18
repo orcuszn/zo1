@@ -27,14 +27,13 @@
             max-width: 500px;
         }
         
-        /* Read Me Button */
         .readme-btn {
             width: 100%;
             padding: 25px;
-            font-size: 28px;
+            font-size: 24px;
             font-family: 'Courier New', monospace;
             font-weight: bold;
-            background: #ffb6c1; /* Light pink button */
+            background: #ffb6c1;
             border: 4px solid #ff69b4;
             border-radius: 15px;
             cursor: pointer;
@@ -51,18 +50,8 @@
             box-shadow: 0 2px 0 #ff69b4;
         }
         
-        .readme-btn span {
-            font-size: 16px;
-            display: block;
-            color: #6b5a4a;
-            margin-top: 5px;
-            text-transform: none;
-            font-style: italic;
-        }
-        
-        /* Paper Message Box - PINK */
         .message-box {
-            background: #fff0f5; /* Lavender blush - soft pink */
+            background: #fff0f5;
             border: 2px solid #ff69b4;
             border-radius: 20px;
             padding: 25px;
@@ -72,7 +61,6 @@
             animation: slideIn 0.3s ease;
         }
         
-        /* Paper texture effect */
         .message-box::before {
             content: '';
             position: absolute;
@@ -87,7 +75,6 @@
             pointer-events: none;
         }
         
-        /* Folded corner effect */
         .message-box::after {
             content: '';
             position: absolute;
@@ -99,7 +86,6 @@
             border-radius: 0 20px 0 20px;
         }
         
-        /* Message content */
         .message-content {
             position: relative;
             z-index: 1;
@@ -118,12 +104,13 @@
         }
         
         .message-text {
-            font-size: 20px;
-            line-height: 2;
+            font-size: 16px;
+            line-height: 1.6;
             color: #8b4513;
             margin-bottom: 20px;
             white-space: pre-line;
-            text-align: center;
+            text-align: left;
+            padding: 0 10px;
         }
         
         .signature {
@@ -134,69 +121,49 @@
             font-size: 18px;
         }
         
-        /* Decorative elements */
         .paper-line {
             width: 100%;
             height: 2px;
             background: repeating-linear-gradient(90deg, transparent, transparent 5px, #ffb6c1 5px, #ffb6c1 10px);
             margin: 15px 0;
         }
-
-        /* Comment for where to put your letter - THIS IS WHERE YOU PUT YOUR LETTER */
-        .letter-spot {
-            border: 2px dashed #ff69b4;
-            background: rgba(255, 255, 255, 0.5);
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 10px;
-            min-height: 150px;
-            color: #ff1493;
-            font-style: italic;
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Read Me Button -->
         <button class="readme-btn" onclick="showMessage()">
             READ ME WHEN YOU'RE READY
         </button>
         
-        <!-- Paper Message Box - ONE PAGE ONLY -->
         <div class="message-box" id="messageBox">
             <div class="message-content">
                 <div class="message-title">IM SORRY</div>
                 <div class="paper-line"></div>
                 
-                <!-- =========================================== -->
-                <!-- ====== 👇 PUT YOUR LETTER HERE 👇 ====== -->
-                <!-- =========================================== -->
                 <div class="message-text">
-                    MY LETTER
+                    Dear Ivy my love,
                     
-                    <!-- THIS IS WHERE YOU TYPE YOUR MESSAGE -->
-                    <!-- Just replace this text with your letter -->
-                    
-                    Dear you,
-                    
-                    I'm really sorry for what happened.
-                    I hope you can forgive me.
-                    
-                    With all my heart,
-                    [Your name]
+                    Hello my love, I believe that this was the first time we fought like for real. Now, I just wanna say I'm really sorry. I know part of it was my fault. I could've communicated better with you, but I didn't. It was really stupid of me, so stupid, and I know it was so annoying. Sana sinabi ko nalang agad. It could've ended way better than what's happening to us right now. Ewan ko ba, napaisip nalang din ako kanina na oo nga, bakit hindi ko nalang sabihin agad. But I think I know that sometimes it's really hard for me to communicate how I feel, especially because all my life I haven't been telling anyone what I really feel. It was always that "okay, I understand" and just keep it to myself and hope it'll pass. But now, I really tried to tell you kanina how I felt talaga. It's just that I'm still trying. Please bear with me, please my love. I'm trying to learn to be better. I don't want to lose you. I really want you to be my first to everything and to be my last of everything. I'm really sorry again, my love. I hope you can forgive me, and I really miss you. I love you.
                 </div>
-                <!-- =========================================== -->
-                <!-- ====== 👆 YOUR LETTER ENDS HERE 👆 ====== -->
-                <!-- =========================================== -->
                 
                 <div class="paper-line"></div>
-                <div class="signature">- From me</div>
+                <div class="signature">- From me -D</div>
             </div>
         </div>
     </div>
 
     <script>
-        // Function to show the message box
         function showMessage() {
             document.getElementById('messageBox').style.display = 'block';
         }
